@@ -2,7 +2,6 @@ import { ThreeIdConnect, EthereumAuthProvider, DidProviderProxy } from '@3id/con
 import { DaoProvider } from './provider';
 import { Proposal } from '../proposals/proposal';
 
-
 export class EthDaoProvider implements DaoProvider {
   provider: DidProviderProxy;
 

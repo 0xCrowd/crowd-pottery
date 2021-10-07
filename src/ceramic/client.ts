@@ -6,7 +6,7 @@ import { DID } from 'dids';
 import { DaoProvider } from '../dao_providers/provider';
 
 export class Client {
-  api_url: string | undefined = process.env.CERAMIC_NODE;
+  api_url: string | undefined = undefined;
   client: CeramicClient | undefined;
 
   constructor(api_url: string) {
