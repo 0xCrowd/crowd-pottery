@@ -6,7 +6,7 @@ import { DidProviderProxy } from '@3id/connect';
 
 export class Client {
   api_url: string | undefined;
-  client: CeramicClient | undefined;
+  client: CeramicClient;
 
   constructor(api_url: string | undefined) {
     // Do we need singleton?
