@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
-    "build-to-client": "tsc; cp -r lib ../crowd-pottery-client/node_modules/crowd-pottery",
+    "build-to-client": "rm -rf ../crowd-pottery-client/node_modules/crowd-pottery; tsc; cp -r lib ../crowd-pottery-client/node_modules/crowd-pottery",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json"
   },

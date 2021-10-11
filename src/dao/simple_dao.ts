@@ -2,9 +2,9 @@ import { TileDocument } from "@ceramicnetwork/stream-tile";
 import { Stream } from '@ceramicnetwork/common';
 import { Dao } from "./dao";
 
-class SimpleDao extends Dao {
+export class SimpleDao extends Dao {
 
-    async create(schema: string | null, params: Object): Promise<TileDocument | null> {
+    async create(params: Object, schema: string | null): Promise<TileDocument | null> {
         if (this.ceramic_client) {
             // ceramic, content, metadata, opts
             let dao_stream = await TileDocument.create(
@@ -26,9 +26,10 @@ class SimpleDao extends Dao {
         return Promise.resolve([""]);
     }
 
-    async get(): Promise<Stream | null> {
+    async get(): Promise<any> {
         if ( this.dao_stream ) {
-            return this.ceramic_client.loadStream(this.dao_stream)
+            let stream = await this.ceramic_client.loadStream(this.dao_stream)
+            return stream.content
         } else {
             return Promise.resolve(null);
         }
