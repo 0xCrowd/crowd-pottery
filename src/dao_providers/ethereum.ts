@@ -1,18 +1,49 @@
 import { ThreeIdConnect, EthereumAuthProvider, DidProviderProxy } from '@3id/connect';
 import { DaoProvider } from './provider';
 import { Proposal } from '../proposals/proposal';
+import { Client } from '../ceramic/client';
 
-export class EthDaoProvider implements DaoProvider {
-  provider: DidProviderProxy;
+export class PotteryDaoProvider implements DaoProvider {
+  external_provider: any;
+  external_address: string;
+  ceramic_node_url: string;
 
-  async connect(provider: any, addresses: string) {
-    const threeIdConnect = new ThreeIdConnect();
-    const authProvider = new EthereumAuthProvider(provider, addresses);
-    await threeIdConnect.connect(authProvider);
-    this.provider = await threeIdConnect.getDidProvider();
+  connected: boolean = false;
+  did_provider: DidProviderProxy;
+  ceramic_client: Client;
+
+  constructor(provider: any, addresses: string, ceramic_node_url: string) {
+    this.external_provider = provider;
+    this.external_address = addresses;
+    this.ceramic_node_url = ceramic_node_url;
   }
 
-  async new_proposal(proposal: Proposal) {
-    // ToDo implement proposal creation
+  async connect() {
+    try {
+
+      // Setting up 3id provider for auth
+      const threeIdConnect = new ThreeIdConnect();
+      const authProvider = new EthereumAuthProvider(this.external_provider, this.external_address);
+      await threeIdConnect.connect(authProvider);
+      this.did_provider = await threeIdConnect.getDidProvider();
+
+      // Connecting to Ceramic
+      this.ceramic_client = new Client(this.ceramic_node_url);
+      await this.ceramic_client.auth(this.did_provider);
+
+      this.connected = true;
+
+    } catch (e) {
+      console.log(e);
+      this.connected = false;
+    }
+  }
+
+  async new_proposal(proposal: Proposal): Promise<string> {
+    if (this.connected) {
+      return 'Mock proposal stream ID';
+    } else {
+      return 'Run connect(provider, addresses, ceramic_node_url) to connect to the DAO';
+    }
   }
 }

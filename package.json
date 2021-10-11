@@ -11,6 +11,7 @@
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
+    "build-to-client": "tsc; cp -r lib ../crowd-pottery-client/node_modules/crowd-pottery",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json"
   },
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/create-hash": "^1.2.2",
     "@types/node": "^16.10.3",
-    "@types/secp256k1": "^4.0.3"
+    "@types/secp256k1": "^4.0.3",
+    "prettier": "^2.4.1"
   }
 }
