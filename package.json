@@ -12,8 +12,7 @@
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "build-to-client": "rm -rf ../crowd-pottery-client/node_modules/crowd-pottery; tsc; cp -r lib ../crowd-pottery-client/node_modules/crowd-pottery",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json"
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "dependencies": {
     "@3id/connect": "^0.2.5",

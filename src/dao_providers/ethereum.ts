@@ -1,6 +1,5 @@
 import { ThreeIdConnect, EthereumAuthProvider, DidProviderProxy } from '@3id/connect';
 import { DaoProvider } from './provider';
-import { Proposal } from '../proposals/proposal';
 import { Client } from '../ceramic/client';
 
 export class PotteryDaoProvider implements DaoProvider {
@@ -20,7 +19,6 @@ export class PotteryDaoProvider implements DaoProvider {
 
   async connect() {
     try {
-
       // Setting up 3id provider for auth
       const threeIdConnect = new ThreeIdConnect();
       const authProvider = new EthereumAuthProvider(this.external_provider, this.external_address);
@@ -32,18 +30,9 @@ export class PotteryDaoProvider implements DaoProvider {
       await this.ceramic_client.auth(this.did_provider);
 
       this.connected = true;
-
     } catch (e) {
       console.log(e);
       this.connected = false;
-    }
-  }
-
-  async new_proposal(proposal: Proposal): Promise<string> {
-    if (this.connected) {
-      return 'Mock proposal stream ID';
-    } else {
-      return 'Run connect(provider, addresses, ceramic_node_url) to connect to the DAO';
     }
   }
 }
