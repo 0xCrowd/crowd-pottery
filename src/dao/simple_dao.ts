@@ -39,7 +39,7 @@ export class SimpleDao extends Dao {
   async new_proposal(params: SimpleProposal): Promise<string> {
     if (this.ceramic_client && this.dao_stream) {
       let new_proposal = await TileDocument.create(this.ceramic_client, params, {
-        schema: 'k3y52l7qbv1frybzsj0cin833xxpsrhu72oggk93l8d4ejikpsthar51titlmg9og',
+        schema: 'k3y52l7qbv1fryi6l85o0tkwfkjbj1ey04yi5049de9m37n5kv5dsvx9qlq47os8w',
       });
       return new_proposal.id.toString();
     } else {

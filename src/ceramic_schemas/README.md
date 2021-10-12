@@ -11,10 +11,10 @@ Creating a Tile which uses Schema: https://developers.ceramic.network/build/cli/
 This schema is default for all proposals for SimpleDao
 
 Corresponding Ceramic Stream:
-`kjzl6cwe1jw149k7y68ide2oqpjxuv724bbbbuj2f8lfjmasdm58towbgpjcpwv`
+`kjzl6cwe1jw14afjuyjov5r26tpt44wwn73obtukg2h62rfyzvp04hm6jxhgtx8`
 
 Corresponding Ceramic Commit:
-`k3y52l7qbv1frybzsj0cin833xxpsrhu72oggk93l8d4ejikpsthar51titlmg9og`
+`k3y52l7qbv1fryi6l85o0tkwfkjbj1ey04yi5049de9m37n5kv5dsvx9qlq47os8w`
 
 - `title`* _string_ - title of the proposal
 - `description`* _string_ - description of the proposal
