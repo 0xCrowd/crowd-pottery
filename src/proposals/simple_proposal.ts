@@ -1,7 +1,7 @@
-import { Proposal, CeramicSchema } from './proposal';
-
-export class SimpleProposal implements Proposal {
-  ceramic_proposal_schema: CeramicSchema;
-  ceramic_vote_schema: CeramicSchema;
-  proposal: Object | undefined;
+// Implements schema described in simple_dao_proposal.json
+export interface SimpleProposal {
+  description: string;
+  options: string[];
+  onsuccess?: string;
+  schema_commit?: string;
 }

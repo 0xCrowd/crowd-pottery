@@ -1,0 +1,19 @@
+{
+  "title": "Crowd Pottery Simple DAO Proposal",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "options": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "onsuccess": { "type": "string" }
+  },
+  "required": [
+    "message",
+    "description",
+    "options"
+  ]
+}
