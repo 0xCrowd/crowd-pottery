@@ -2,7 +2,6 @@ import CeramicClient from '@ceramicnetwork/http-client';
 import KeyDidResolver from 'key-did-resolver';
 import ThreeIdResolver from '@ceramicnetwork/3id-did-resolver';
 import { DID } from 'dids';
-import { DidProviderProxy } from '@3id/connect';
 
 export class Client {
   api_url: string | undefined;
@@ -16,7 +15,7 @@ export class Client {
     this.api_url = api_url;
   }
 
-  async auth(provider: DidProviderProxy) {
+  async auth(provider: any) {
     if (!this.client) {
       this.client = new CeramicClient(this.api_url);
       const did_resolver = {

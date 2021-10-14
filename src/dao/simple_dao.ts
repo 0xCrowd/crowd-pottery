@@ -4,7 +4,7 @@ import { SimpleProposal } from '../proposals/simple_proposal';
 
 // Yay, "out of the box" simplified experience!
 export class SimpleDao extends Dao {
-  async create(params: Object, schema: string | null): Promise<TileDocument> {
+  async create(params: Object): Promise<TileDocument> {
     if (this.ceramic_client) {
       // ceramic, content, metadata, opts
       let dao_stream = await TileDocument.create(this.ceramic_client, params); // Currently only one controller is supported per document

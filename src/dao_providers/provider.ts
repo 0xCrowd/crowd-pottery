@@ -1,7 +1,5 @@
-import { DidProviderProxy } from '@3id/connect';
 import { Client } from '../ceramic/client';
 
-export interface DaoProvider {
-  did_provider: DidProviderProxy;
+export interface DaoProviderInterface {
   ceramic_client: Client;
 }
