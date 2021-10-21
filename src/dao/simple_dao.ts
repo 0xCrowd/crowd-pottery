@@ -2,12 +2,23 @@ import { TileDocument } from '@ceramicnetwork/stream-tile';
 import { Dao } from './dao';
 import { SimpleProposal } from '../proposals/simple_proposal';
 
+export interface SimpleDaoInterface {
+  name: string  // DAO name
+  l1_type: string  // L1 type
+  l1_vault: string  // L1 DAO Asset vault address
+  l1_token: string  // L1 DAO Token address
+  proposal_total_threshold: number  // 0 - 1 which share of all holders should vote to proposal be legit?
+  proposal_for_threshold: number  // 0 - 1 which share of VOTED users should vote "for" for proposal pass?
+  proposal_timeout?: number  // (secs) every proposal will be resolved after the timeout
+}
+
 // Yay, "out of the box" simplified experience!
 export class SimpleDao extends Dao {
-  async create(params: Object): Promise<TileDocument> {
+  async create(params: SimpleDaoInterface): Promise<TileDocument> {
     if (this.ceramic_client) {
-      // ceramic, content, metadata, opts
-      let dao_stream = await TileDocument.create(this.ceramic_client, params); // Currently only one controller is supported per document
+      let dao_stream = await TileDocument.create(this.ceramic_client, params, {
+        schema: 'k3y52l7qbv1fryon63ri7x3famp8n0l0329nbt5197ov1t688pwyuwmpbii3edd6o',
+      }); // Currently only one controller is supported per document
       this.dao_stream = dao_stream.id.toString();
       await this.lock();
       return dao_stream;

@@ -1,0 +1,22 @@
+{
+  "title": "Crowd Pottery Simple DAO",
+  "type": "object",
+  "properties": {
+    "name": {"type":  "string"},
+    "l1_type": {"type":  "string"},
+    "l1_vault":  {"type":  "string"},
+    "l1_token": {"type":  "string"},
+    "proposal_total_threshold":  {"type":  "number"},
+    "proposal_for_threshold": {"type":  "number"},
+    "proposal_timeout":  {"type":  "number"}
+  },
+  "required": [
+    "name",
+    "l1_type",
+    "l1_vault",
+    "l1_token",
+    "proposal_total_threshold",
+    "proposal_for_threshold",
+    "proposal_timeout"
+  ]
+}

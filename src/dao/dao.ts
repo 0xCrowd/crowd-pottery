@@ -13,7 +13,7 @@ export abstract class Dao {
     this.dao_stream = dao_stream;
     this.schema = schema;
   }
-  abstract create(params: Object, schema?: string): Promise<TileDocument>; // Initialize new DAO
+  abstract create(params: any, schema?: string): Promise<TileDocument>; // Initialize new DAO
   abstract edit(params: Object): Promise<[commit: string]>; // Edit not locked DAO
   abstract lock(): Promise<[commit: string]>; // After the lock the DAO creator can't change DAO no more
   abstract get(): Promise<any>; // Get DAO data from Ceramic
