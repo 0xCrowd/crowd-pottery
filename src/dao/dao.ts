@@ -3,12 +3,16 @@ import CeramicClient from '@ceramicnetwork/http-client';
 import { TileDocument } from '@ceramicnetwork/stream-tile';
 
 export abstract class Dao {
+  provider: DaoProviderInterface;
   dao_stream: string | undefined;
   schema: string | undefined;
   ceramic_client: CeramicClient;
+  proposals_registry: string | undefined; // Lazy defined
 
+  // ToDo schema
   constructor(provider: DaoProviderInterface, dao_stream?: string, schema?: string) {
     // Connect to existing DAO or init the empty one
+    this.provider = provider;
     this.ceramic_client = provider.ceramic_client.client;
     this.dao_stream = dao_stream;
     this.schema = schema;
@@ -21,6 +25,5 @@ export abstract class Dao {
   // Create new proposal linked to the DAO
   // Please verify, that the user is allowed to create new proposals in your app!
   abstract new_proposal(params: Object): Promise<string>;
-
   abstract get_proposals(): Promise<any>; // Get list of proposals linked with the DAO
 }
