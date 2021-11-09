@@ -42,4 +42,8 @@ export class EthDaoProvider implements DaoProviderInterface {
       throw new Error('Error while connecting. Is Ceramic endpoint is up?');
     }
   }
+
+  async get(stream: string): Promise<any> {
+    return await this.ceramic_client.client.loadStream(stream);
+  }
 }
